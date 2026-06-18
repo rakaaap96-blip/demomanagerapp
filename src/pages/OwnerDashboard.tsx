@@ -1,4 +1,4 @@
-import { TrendingUp, Truck, ClipboardList, AlertTriangle, Bell, DollarSign, Package } from "lucide-react";
+import { TrendingUp, ClipboardList, AlertTriangle, Bell, DollarSign, Package } from "lucide-react";
 import { StatCard } from "../components/Charts";
 import { useAuth } from "../hooks/useAuth";
 
@@ -13,8 +13,6 @@ export default function OwnerDashboard() {
         <StatCard label="Kasbon Aktif" value="—" icon={<DollarSign size={24} />} color="yellow" suffix="masih berjalan" />
         <StatCard label="Outstanding Kasbon" value="—" icon={<DollarSign size={24} />} color="orange" suffix="belum lunas" />
         <StatCard label="Stok Kritis" value="—" icon={<AlertTriangle size={24} />} color="red" suffix="perlu reorder" />
-        <StatCard label="STNK Akan Habis" value="—" icon={<Truck size={24} />} color="purple" suffix="perpanjangan" />
-        <StatCard label="KIR Akan Habis" value="—" icon={<Truck size={24} />} color="cyan" suffix="perpanjangan" />
         <StatCard label="Pembayaran Masuk" value="—" icon={<DollarSign size={24} />} color="green" suffix="bulan ini" />
       </div>
 
