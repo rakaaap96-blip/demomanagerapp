@@ -197,7 +197,7 @@ export default function Sidebar({
     >
       <div className="sidebar-header">
         <div className="sidebar-brand">
-          <div className="sidebar-logo">JPP</div>
+          <div className="sidebar-logo"></div>
           {!collapsed && (
             <div className="sidebar-brand-text">
               <h1>E-Manager</h1>
