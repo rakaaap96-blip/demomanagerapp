@@ -2,8 +2,6 @@ import { useState } from "react";
 import { DollarSign, Plus, Archive } from "lucide-react";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface ExpenseRequest { id: number; title: string; description: string | null; amount: number; paidAmount: number; remaining: number; expenseType: string; status: string; requesterName: string | null; requestDate: string; approvalDate: string | null; notes: string | null; createdAt: string; archived?: number; archivedAt?: string | null; }
 
 export default function ExpenseRequests() {
@@ -11,7 +9,6 @@ export default function ExpenseRequests() {
   const [archived] = useState<ExpenseRequest[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

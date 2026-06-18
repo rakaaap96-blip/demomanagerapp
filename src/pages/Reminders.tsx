@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { Bell, Plus, CheckCircle } from "lucide-react";
 import Modal from "../components/Modal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface Reminder { id: number; title: string; description: string | null; remindAt: string; remindType: string; relatedEntity: string | null; relatedId: number | null; done: boolean; createdAt: string; }
 
 export default function Reminders() {
   const [data] = useState<Reminder[]>([]);
   const [show, setShow] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

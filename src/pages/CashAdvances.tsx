@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { DollarSign, Plus, Archive } from "lucide-react";
-import { useAuth } from "../hooks/useAuth";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface CashAdvance { id: number; employeeId: number; employeeName: string; employeeType: string; amount: number; paidAmount: number; remaining: number; disbursedAmount: number; requestDate: string; approvalStatus: string; notes: string | null; createdAt: string; archived?: number; archivedAt?: string | null; }
 
 export default function CashAdvances() {
@@ -12,7 +9,6 @@ export default function CashAdvances() {
   const [archived] = useState<CashAdvance[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

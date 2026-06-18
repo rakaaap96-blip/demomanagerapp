@@ -2,8 +2,6 @@ import { useState } from "react";
 import { ShoppingCart, Plus, Archive } from "lucide-react";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface PurchaseOrder { id: number; supplierId: number; orderDate: string; expectedDate: string | null; status: string; notes: string | null; createdAt: string; approvalStatus: string; archived?: number; archivedAt?: string | null; }
 
 export default function PurchaseOrders() {
@@ -11,7 +9,6 @@ export default function PurchaseOrders() {
   const [archived] = useState<PurchaseOrder[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

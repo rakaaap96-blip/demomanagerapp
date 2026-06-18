@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FileText, Plus, Archive } from "lucide-react";
-import { useAuth } from "../hooks/useAuth";
 import { useConfirm } from "../hooks/useConfirm";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";

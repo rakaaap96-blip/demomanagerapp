@@ -2,8 +2,6 @@ import { useState } from "react";
 import { FileText, Plus, Archive } from "lucide-react";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface TravelPermit { id: number; driverId: number; driverName: string; vehicleId: number | null; vehiclePlate: string | null; destination: string; purpose: string | null; startDate: string; endDate: string; status: string; approvedBy: number | null; approvalDate: string | null; notes: string | null; createdAt: string; archived?: number; archivedAt?: string | null; }
 
 export default function TravelPermits() {
@@ -11,7 +9,6 @@ export default function TravelPermits() {
   const [archived] = useState<TravelPermit[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

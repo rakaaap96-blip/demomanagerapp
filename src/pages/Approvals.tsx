@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { CheckSquare, CheckCircle, XCircle } from "lucide-react";
-import { useAuth } from "../hooks/useAuth";
 import { useConfirm } from "../hooks/useConfirm";
 import type { Approval } from "../types";
 
@@ -8,12 +7,12 @@ export default function Approvals() {
   const [approvals] = useState<Approval[]>([]);
   const confirm = useConfirm();
 
-  const approve = async (id: number) => {
+  const approve = async (_id: number) => {
     if (!(await confirm({ message: "Setujui permintaan ini?", variant: "warning" }))) return;
     alert("Fitur demo: menyetujui");
   };
 
-  const reject = async (id: number) => {
+  const reject = async (_id: number) => {
     if (!(await confirm({ message: "Tolak permintaan ini?", variant: "danger" }))) return;
     alert("Fitur demo: menolak");
   };

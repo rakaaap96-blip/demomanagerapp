@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { LayoutDashboard, TrendingUp, Truck, ClipboardList, AlertTriangle, Bell, DollarSign, Package } from "lucide-react";
+import { TrendingUp, Truck, ClipboardList, AlertTriangle, Bell, DollarSign, Package } from "lucide-react";
 import { StatCard } from "../components/Charts";
 import { useAuth } from "../hooks/useAuth";
 
 export default function OwnerDashboard() {
-  const { admin } = useAuth();
+  useAuth();
 
   return (
     <div>

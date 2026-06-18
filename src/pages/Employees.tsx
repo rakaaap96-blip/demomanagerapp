@@ -26,7 +26,7 @@ export default function Employees() {
   };
 
   const save = async () => { alert("Fitur demo: menyimpan karyawan"); };
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus karyawan ini?" }))) return;
     alert("Fitur demo: menghapus karyawan");
   };

@@ -31,7 +31,7 @@ export default function Vehicles() {
   };
 
   const save = async () => { alert("Fitur demo: menyimpan kendaraan"); };
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus kendaraan ini?" }))) return;
     alert("Fitur demo: menghapus kendaraan");
   };

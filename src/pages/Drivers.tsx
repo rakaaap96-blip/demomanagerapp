@@ -25,7 +25,7 @@ export default function Drivers() {
   };
 
   const save = async () => { alert("Fitur demo: menyimpan driver"); };
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus driver ini?" }))) return;
     alert("Fitur demo: menghapus driver");
   };

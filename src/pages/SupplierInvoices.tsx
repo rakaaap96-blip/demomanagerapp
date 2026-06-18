@@ -1,14 +1,11 @@
 import { useState } from "react";
-import { FileText, Plus, Upload } from "lucide-react";
+import { FileText, Plus } from "lucide-react";
 import Modal from "../components/Modal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface SupplierInvoiceAttachment { id: number; invoiceNumber: string; supplierId: number; supplierName: string; invoiceDate: string | null; totalAmount: number; paidAmount: number; fileName: string | null; fileType: string | null; isActive: boolean; }
 
 export default function SupplierInvoices() {
   const [data] = useState<SupplierInvoiceAttachment[]>([]);
   const [show, setShow] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

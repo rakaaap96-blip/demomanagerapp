@@ -38,7 +38,7 @@ export default function Inventory() {
     alert("Fitur demo: menyimpan part");
   };
 
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus part ini?" }))) return;
     alert("Fitur demo: menghapus part");
   };

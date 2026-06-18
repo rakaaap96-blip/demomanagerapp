@@ -2,8 +2,6 @@ import { useState } from "react";
 import { DollarSign, Plus, Archive } from "lucide-react";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface Salary { id: number; employeeId: number; employeeName: string; employeeType: string; amount: number; paidAmount: number; remaining: number; period: string | null; status: string; paymentDate: string | null; notes: string | null; createdAt: string; archived?: number; archivedAt?: string | null; }
 
 export default function Salaries() {
@@ -11,7 +9,6 @@ export default function Salaries() {
   const [archived] = useState<Salary[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

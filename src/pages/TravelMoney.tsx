@@ -2,8 +2,6 @@ import { useState } from "react";
 import { DollarSign, Plus, Archive } from "lucide-react";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface TravelMoney { id: number; driverId: number; driverName: string; totalAmount: number; paidAmount: number; kasbonDeduction: number; remaining: number; description: string | null; status: string; requestDate: string; approvalStatus: string; archived?: number; archivedAt?: string | null; }
 
 export default function TravelMoneyPage() {
@@ -11,7 +9,6 @@ export default function TravelMoneyPage() {
   const [archived] = useState<TravelMoney[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

@@ -2,8 +2,6 @@ import { useState } from "react";
 import { FileText, Plus, Archive } from "lucide-react";
 import Modal from "../components/Modal";
 import ArchiveModal from "../components/ArchiveModal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface ProofOfDelivery { id: number; clientId: number; clientName: string; invoiceId: number | null; invoiceNumber: string | null; driverName: string | null; totalOrders: number; status: string; notes: string | null; createdAt: string; receivedAt: string | null; archived?: number; archivedAt?: string | null; }
 
 export default function ProofOfDeliveryPage() {
@@ -11,7 +9,6 @@ export default function ProofOfDeliveryPage() {
   const [archived] = useState<ProofOfDelivery[]>([]);
   const [show, setShow] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
-  const confirm = useConfirm();
 
   return (
     <div>

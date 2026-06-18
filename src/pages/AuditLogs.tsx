@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { History, ClipboardList } from "lucide-react";
+import { History } from "lucide-react";
 import type { AuditLog } from "../types";
 
 export default function AuditLogs() {

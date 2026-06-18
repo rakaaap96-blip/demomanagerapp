@@ -1,9 +1,9 @@
 import { Package, Truck, FileText, AlertTriangle, Wrench, UserCircle, Activity, DollarSign, TrendingUp, ClipboardList, Bell } from "lucide-react";
-import { StatCard, BarChart } from "../components/Charts";
+import { StatCard } from "../components/Charts";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Dashboard() {
-  const { admin } = useAuth();
+  useAuth();
 
   return (
     <div>

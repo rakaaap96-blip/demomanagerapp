@@ -18,7 +18,7 @@ export default function Clients() {
   const openEdit = (c: Client) => { setEdit(c); setForm({ name: c.name, contact: c.contact || "", address: c.address || "" }); setShow(true); };
 
   const save = async () => { alert("Fitur demo: menyimpan klien"); };
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus klien ini?" }))) return;
     alert("Fitur demo: menghapus klien");
   };

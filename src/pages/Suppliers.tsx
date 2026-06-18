@@ -18,7 +18,7 @@ export default function Suppliers() {
   const openEdit = (s: Supplier) => { setEdit(s); setForm({ name: s.name, contact: s.contact || "", address: s.address || "" }); setShow(true); };
 
   const save = async () => { alert("Fitur demo: menyimpan supplier"); };
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus supplier ini?" }))) return;
     alert("Fitur demo: menghapus supplier");
   };

@@ -25,7 +25,7 @@ export default function Repairs() {
   };
 
   const save = async () => { alert("Fitur demo: menyimpan perbaikan"); };
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus data perbaikan ini?" }))) return;
     alert("Fitur demo: menghapus perbaikan");
   };

@@ -10,7 +10,7 @@ export default function AdminPage() {
   const [show, setShow] = useState(false);
   const confirm = useConfirm();
 
-  const remove = async (id: number) => {
+  const remove = async (_id: number) => {
     if (!(await confirm({ message: "Hapus admin ini?" }))) return;
     alert("Fitur demo: menghapus admin");
   };

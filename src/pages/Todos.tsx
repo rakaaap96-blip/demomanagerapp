@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { ListTodo, Plus } from "lucide-react";
 import Modal from "../components/Modal";
-import { useConfirm } from "../hooks/useConfirm";
-
 interface Todo { id: number; title: string; description: string | null; done: boolean; dueDate: string | null; createdAt: string; }
 
 export default function Todos() {
   const [todos] = useState<Todo[]>([]);
   const [show, setShow] = useState(false);
   const [filter, setFilter] = useState<"all" | "active" | "done">("all");
-  const confirm = useConfirm();
 
   const filtered = todos.filter((t) => {
     if (filter === "active") return !t.done;
@@ -17,7 +14,7 @@ export default function Todos() {
     return true;
   });
 
-  const toggleDone = async (id: number, current: boolean) => {
+  const toggleDone = async (_id: number, current: boolean) => {
     alert(`Fitur demo: ${current ? "membatalkan" : "menandai"} todo`);
   };
 

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Database, AlertTriangle } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import { useConfirm } from "../hooks/useConfirm";
 
 export default function Maintenance() {
