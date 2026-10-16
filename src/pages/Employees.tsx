@@ -1,18 +1,38 @@
 import { useState } from "react";
 import { Wrench, Plus } from "lucide-react";
+import { toast } from "sonner";
 import Modal from "../components/Modal";
 import { useConfirm } from "../hooks/useConfirm";
+import type { Employee } from "../types";
 
-interface Employee {
-  id: number; name: string; phone: string | null; employeeType: string;
-  specialization: string | null; hireDate: string | null; salary: number;
-  username: string | null; licenseNumber: string | null; vehicleId: number | null;
-}
+const STORAGE_KEY = "demo.employees";
+
+const loadEmployees = (): Employee[] => {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    const parsed: unknown = JSON.parse(raw);
+    return Array.isArray(parsed) ? (parsed as Employee[]) : [];
+  } catch {
+    return [];
+  }
+};
+
+const persistEmployees = (list: Employee[]): Employee[] => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+  } catch {
+    toast.error("Gagal menyimpan data ke penyimpanan browser");
+  }
+  return list;
+};
 
 const emptyForm = { name: "", phone: "", employeeType: "Mekanik", specialization: "", hireDate: "", salary: "0", username: "", licenseNumber: "", vehicleId: "" };
 
+const trimOrNull = (v: string) => (v.trim() ? v.trim() : null);
+
 export default function Employees() {
-  const [employees] = useState<Employee[]>([]);
+  const [employees, setEmployees] = useState<Employee[]>(loadEmployees);
   const [show, setShow] = useState(false);
   const [edit, setEdit] = useState<Employee | null>(null);
   const [form, setForm] = useState(emptyForm);
@@ -25,10 +45,41 @@ export default function Employees() {
     setShow(true);
   };
 
-  const save = async () => { alert("Fitur demo: menyimpan karyawan"); };
-  const remove = async (_id: number) => {
-    if (!(await confirm({ message: "Hapus karyawan ini?" }))) return;
-    alert("Fitur demo: menghapus karyawan");
+  const save = () => {
+    const name = form.name.trim();
+    if (!name) {
+      toast.error("Nama karyawan wajib diisi");
+      return;
+    }
+    const salary = Math.max(0, Number(form.salary) || 0);
+
+    if (edit) {
+      const next = employees.map((e) => (e.id === edit.id
+        ? { ...e, name, phone: trimOrNull(form.phone), employeeType: form.employeeType, specialization: trimOrNull(form.specialization), hireDate: trimOrNull(form.hireDate), salary }
+        : e));
+      setEmployees(persistEmployees(next));
+      toast.success(`Karyawan "${name}" diperbarui`);
+    } else {
+      const id = employees.reduce((max, e) => Math.max(max, e.id), 0) + 1;
+      const created: Employee = {
+        id, name, phone: trimOrNull(form.phone), employeeType: form.employeeType,
+        specialization: trimOrNull(form.specialization), hireDate: trimOrNull(form.hireDate),
+        salary, username: trimOrNull(form.username), licenseNumber: trimOrNull(form.licenseNumber),
+        vehicleId: form.vehicleId ? Number(form.vehicleId) : null,
+        ktpPath: null, simPath: null, createdAt: new Date().toISOString(),
+      };
+      setEmployees(persistEmployees([...employees, created]));
+      toast.success(`Karyawan "${name}" ditambahkan`);
+    }
+    setShow(false);
+  };
+
+  const remove = async (id: number) => {
+    const target = employees.find((e) => e.id === id);
+    if (!target) return;
+    if (!(await confirm({ message: `Hapus karyawan "${target.name}"?`, variant: "danger", confirmLabel: "Hapus" }))) return;
+    setEmployees(persistEmployees(employees.filter((e) => e.id !== id)));
+    toast.success(`Karyawan "${target.name}" dihapus`);
   };
 
   return (
